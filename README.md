@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Create a 3x3 array
+        // Creating a 3x3 grid
         int[][] grid = new int[3][3];
         Scanner scanner = new Scanner(System.in);
         boolean won = false;
@@ -26,25 +26,25 @@ public class Main {
             System.out.print("Enter column (0, 1, or 2): ");
             int col = scanner.nextInt();
 
-            // Check whether or not the row chosen by user contains all 1
+            // Checking whether or not the row chosen by user contains all 1
             if (grid[row][col] != 0) {
-                System.out.println("Cell is already taken. Please choose a different cell.");
+                System.out.println("This cell is unfortunately already taken. Please choose a different cell.");
                 continue;
             }
 
             grid[row][col] = 1;
             if (checkWinner(grid)) {
                 printGrid(grid);
-                System.out.println("Congratulations! You've won the game!");
+                System.out.println("Congratulations! You did it, you've just won the game!");
                 won = true;
             }
         }
         
-        // Close the scanner
+        // Closing the scanner
         scanner.close();
     }
 
-    // Function to print the current grid
+    // Printing the current grid
     public static void printGrid(int[][] grid) {
         for (int[] row : grid) {
             for (int cell : row) {
@@ -55,16 +55,16 @@ public class Main {
         System.out.println();
     }
 
-    // Function to check if there is a winner
+    // Checking if there is a winner
     public static boolean checkWinner(int[][] grid) {
-        // Check rows for winner
+        // Checking rows for winner
         for (int[] row : grid) {
             if (allCellsAreOne(row)) {
                 return true;
             }
         }
 
-        // Check columns for winner
+        // Checking columns for winner
         for (int col = 0; col < 3; col++) {
             boolean win = true;
             for (int row = 0; row < 3; row++) {
